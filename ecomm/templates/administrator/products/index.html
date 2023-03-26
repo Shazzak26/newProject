@@ -1,0 +1,30 @@
+{% extends "administrator/base.html" %}
+
+{% block p-title %}
+    <h1>Category List</h1>
+{% endblock p-title %}
+
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'cat-create' %}" role="button"> Create Category</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Created By</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+                <tr>
+                    <td> {{item.name}} </td>
+                    <td>{{item.user}}</td>
+                    <td>
+                    <a class="btn btn-warning" href={% url 'cat-update' item.id %}>Update</a>
+                    <a class="btn btn-danger" href="">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
